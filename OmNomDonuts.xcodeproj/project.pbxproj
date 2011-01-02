@@ -15,6 +15,12 @@
 		2899E5220DE3E06400AC0155 /* OmNomDonutsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* OmNomDonutsViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* OmNomDonutsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* OmNomDonutsViewController.m */; };
+		9B1ACD8F12D0371700BFD84E /* omnom.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9B1ACD8E12D0371700BFD84E /* omnom.caf */; };
+		9B1ACD9812D03B6000BFD84E /* SingletonSoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1ACD9712D03B6000BFD84E /* SingletonSoundManager.m */; };
+		9B1ACD9C12D03B7A00BFD84E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B1ACD9B12D03B7A00BFD84E /* AudioToolbox.framework */; };
+		9B1ACDA012D03B7F00BFD84E /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B1ACD9F12D03B7F00BFD84E /* CoreAudio.framework */; };
+		9B1ACDA412D03B8700BFD84E /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B1ACDA312D03B8700BFD84E /* OpenAL.framework */; };
+		9B1ACDA812D03B8F00BFD84E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B1ACDA712D03B8F00BFD84E /* AVFoundation.framework */; };
 		EF7C7E1612D03373006AAAC1 /* donut.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7C7E1312D03373006AAAC1 /* donut.png */; };
 		EF7C7E1712D03373006AAAC1 /* donut2.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7C7E1412D03373006AAAC1 /* donut2.png */; };
 		EF7C7E1812D03373006AAAC1 /* donut3.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7C7E1512D03373006AAAC1 /* donut3.png */; };
@@ -42,6 +48,14 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* OmNomDonuts_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OmNomDonuts_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* OmNomDonuts-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OmNomDonuts-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		9B1ACD8E12D0371700BFD84E /* omnom.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = omnom.caf; sourceTree = "<group>"; };
+		9B1ACD9612D03B6000BFD84E /* SingletonSoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonSoundManager.h; sourceTree = "<group>"; };
+		9B1ACD9712D03B6000BFD84E /* SingletonSoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingletonSoundManager.m; sourceTree = "<group>"; };
+		9B1ACD9B12D03B7A00BFD84E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		9B1ACD9F12D03B7F00BFD84E /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		9B1ACDA312D03B8700BFD84E /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		9B1ACDA712D03B8F00BFD84E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9B1ACDB212D03BB700BFD84E /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		EF7C7E1312D03373006AAAC1 /* donut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = donut.png; sourceTree = "<group>"; };
 		EF7C7E1412D03373006AAAC1 /* donut2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = donut2.png; sourceTree = "<group>"; };
 		EF7C7E1512D03373006AAAC1 /* donut3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = donut3.png; sourceTree = "<group>"; };
@@ -66,6 +80,10 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				EF7C7E5A12D03DA7006AAAC1 /* QuartzCore.framework in Frameworks */,
+				9B1ACD9C12D03B7A00BFD84E /* AudioToolbox.framework in Frameworks */,
+				9B1ACDA012D03B7F00BFD84E /* CoreAudio.framework in Frameworks */,
+				9B1ACDA412D03B8700BFD84E /* OpenAL.framework in Frameworks */,
+				9B1ACDA812D03B8F00BFD84E /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +93,9 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9B1ACDB212D03BB700BFD84E /* Common.h */,
+				9B1ACD9612D03B6000BFD84E /* SingletonSoundManager.h */,
+				9B1ACD9712D03B6000BFD84E /* SingletonSoundManager.m */,
 				1D3623240D0F684500981E51 /* OmNomDonutsAppDelegate.h */,
 				1D3623250D0F684500981E51 /* OmNomDonutsAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* OmNomDonutsViewController.h */,
@@ -103,6 +124,10 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				9B1ACD9B12D03B7A00BFD84E /* AudioToolbox.framework */,
+				9B1ACD9F12D03B7F00BFD84E /* CoreAudio.framework */,
+				9B1ACDA312D03B8700BFD84E /* OpenAL.framework */,
+				9B1ACDA712D03B8F00BFD84E /* AVFoundation.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -119,6 +144,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9B1ACD8E12D0371700BFD84E /* omnom.caf */,
 				EF7C7E1312D03373006AAAC1 /* donut.png */,
 				EF7C7E1412D03373006AAAC1 /* donut2.png */,
 				EF7C7E1512D03373006AAAC1 /* donut3.png */,
@@ -204,6 +230,7 @@
 				EF7C7E1612D03373006AAAC1 /* donut.png in Resources */,
 				EF7C7E1712D03373006AAAC1 /* donut2.png in Resources */,
 				EF7C7E1812D03373006AAAC1 /* donut3.png in Resources */,
+				9B1ACD8F12D0371700BFD84E /* omnom.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +246,7 @@
 				28D7ACF80DDB3853001CB0EB /* OmNomDonutsViewController.m in Sources */,
 				EFD277C012CED2EA00D7B0F3 /* OmNomDonutsView.m in Sources */,
 				EFD277F012CED77900D7B0F3 /* Donut.m in Sources */,
+				9B1ACD9812D03B6000BFD84E /* SingletonSoundManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

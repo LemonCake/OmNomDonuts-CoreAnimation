@@ -8,6 +8,7 @@
 
 #import "OmNomDonutsView.h"
 #import "Donut.h"
+#import "Common.h"
 
 
 @implementation OmNomDonutsView
@@ -29,6 +30,8 @@
 	donutArray = [[NSMutableArray alloc] init];
 	donutTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(addDonut) userInfo:nil repeats:YES];
 	updateTimer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
+	sharedSoundManager = [SingletonSoundManager sharedSoundManager];
+	[sharedSoundManager loadSoundWithKey:@"omnom" fileName:@"omnom" fileExt:@"caf" frequency:44100];
 }
 
 - (id)initWithFrame:(CGRect)frame {
@@ -56,12 +59,13 @@
 			if(distanceToCenter <= tapDonut.frame.size.width/2) {
 				NSLog(@"HIT");
 				[self animateDonutPress:tapDonut];
+				[sharedSoundManager playSoundWithKey:@"omnom" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
 			}
 		}
 	}
 }
 
-#if 0
+#if 1
 - (void)animateDonutPress:(id)sender {
 	Donut *tapDonut = (Donut *)sender; 
 	[UIView animateWithDuration:1

@@ -12,7 +12,6 @@
 @implementation Donut
 
 @synthesize donutImage;
-
 - (id)init {
 	UIImage *image = [UIImage imageNamed:@"donut.png"];
 	CGRect frame = CGRectMake(0, 0, image.size.width, image.size.height);
@@ -20,7 +19,6 @@
 		self.opaque = NO;
 		self.layer.cornerRadius = self.frame.size.width/2;
 		donutImage = image;
-		
 	}
 	return self;
 }

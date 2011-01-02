@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "SingletonSoundManager.h"
 
 @class Donut;
 
@@ -15,7 +16,7 @@
 	NSMutableArray *donutArray;
 	NSTimer *donutTimer;
 	NSTimer *updateTimer;
-	
+	SingletonSoundManager *sharedSoundManager;
 }
 
 @property (nonatomic, retain) NSTimer *donutTimer;
