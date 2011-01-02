@@ -48,6 +48,8 @@
 	donutTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(addDonut) userInfo:nil repeats:YES];
 	sharedSoundManager = [SingletonSoundManager sharedSoundManager];
 	[sharedSoundManager loadSoundWithKey:@"omnom" fileName:@"omnom" fileExt:@"caf" frequency:44100];
+	[sharedSoundManager loadSoundWithKey:@"hit" fileName:@"hit" fileExt:@"caf" frequency:44100];
+
 }
 
 - (void)addDonut {
@@ -104,6 +106,7 @@
 		[sharedSoundManager playSoundWithKey:@"omnom" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
 	} else {
 		tapDonut.changeImage;
+		[sharedSoundManager playSoundWithKey:@"hit" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
 	}
 	
 }

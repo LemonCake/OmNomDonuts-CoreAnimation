@@ -21,6 +21,7 @@
 		9B1ACDA012D03B7F00BFD84E /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B1ACD9F12D03B7F00BFD84E /* CoreAudio.framework */; };
 		9B1ACDA412D03B8700BFD84E /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B1ACDA312D03B8700BFD84E /* OpenAL.framework */; };
 		9B1ACDA812D03B8F00BFD84E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B1ACDA712D03B8F00BFD84E /* AVFoundation.framework */; };
+		9BC2C71D12D1476100F7704B /* hit.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9BC2C71C12D1476100F7704B /* hit.caf */; };
 		EF7C7E1612D03373006AAAC1 /* donut.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7C7E1312D03373006AAAC1 /* donut.png */; };
 		EF7C7E1712D03373006AAAC1 /* donut2.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7C7E1412D03373006AAAC1 /* donut2.png */; };
 		EF7C7E1812D03373006AAAC1 /* donut3.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7C7E1512D03373006AAAC1 /* donut3.png */; };
@@ -55,6 +56,7 @@
 		9B1ACDA312D03B8700BFD84E /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		9B1ACDA712D03B8F00BFD84E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9B1ACDB212D03BB700BFD84E /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		9BC2C71C12D1476100F7704B /* hit.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = hit.caf; sourceTree = "<group>"; };
 		EF7C7E1312D03373006AAAC1 /* donut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = donut.png; sourceTree = "<group>"; };
 		EF7C7E1412D03373006AAAC1 /* donut2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = donut2.png; sourceTree = "<group>"; };
 		EF7C7E1512D03373006AAAC1 /* donut3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = donut3.png; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				9B1ACD8E12D0371700BFD84E /* omnom.caf */,
+				9BC2C71C12D1476100F7704B /* hit.caf */,
 				EF7C7E1312D03373006AAAC1 /* donut.png */,
 				EF7C7E1412D03373006AAAC1 /* donut2.png */,
 				EF7C7E1512D03373006AAAC1 /* donut3.png */,
@@ -226,6 +229,7 @@
 				EF7C7E1712D03373006AAAC1 /* donut2.png in Resources */,
 				EF7C7E1812D03373006AAAC1 /* donut3.png in Resources */,
 				9B1ACD8F12D0371700BFD84E /* omnom.caf in Resources */,
+				9BC2C71D12D1476100F7704B /* hit.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
