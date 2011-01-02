@@ -18,6 +18,7 @@
 		EF7C7E1612D03373006AAAC1 /* donut.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7C7E1312D03373006AAAC1 /* donut.png */; };
 		EF7C7E1712D03373006AAAC1 /* donut2.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7C7E1412D03373006AAAC1 /* donut2.png */; };
 		EF7C7E1812D03373006AAAC1 /* donut3.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7C7E1512D03373006AAAC1 /* donut3.png */; };
+		EF7C7E5A12D03DA7006AAAC1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF7C7E5912D03DA7006AAAC1 /* QuartzCore.framework */; };
 		EFD277BA12CED0F100D7B0F3 /* bluetablecloth.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD277B912CED0F100D7B0F3 /* bluetablecloth.png */; };
 		EFD277C012CED2EA00D7B0F3 /* OmNomDonutsView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD277BF12CED2EA00D7B0F3 /* OmNomDonutsView.m */; };
 		EFD277F012CED77900D7B0F3 /* Donut.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD277EF12CED77900D7B0F3 /* Donut.m */; };
@@ -44,6 +45,7 @@
 		EF7C7E1312D03373006AAAC1 /* donut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = donut.png; sourceTree = "<group>"; };
 		EF7C7E1412D03373006AAAC1 /* donut2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = donut2.png; sourceTree = "<group>"; };
 		EF7C7E1512D03373006AAAC1 /* donut3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = donut3.png; sourceTree = "<group>"; };
+		EF7C7E5912D03DA7006AAAC1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EFD277B912CED0F100D7B0F3 /* bluetablecloth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluetablecloth.png; sourceTree = "<group>"; };
 		EFD277BE12CED2EA00D7B0F3 /* OmNomDonutsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OmNomDonutsView.h; sourceTree = "<group>"; };
 		EFD277BF12CED2EA00D7B0F3 /* OmNomDonutsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OmNomDonutsView.m; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				EF7C7E5A12D03DA7006AAAC1 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +140,7 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+				EF7C7E5912D03DA7006AAAC1 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

@@ -17,9 +17,10 @@
 	UIImage *image = [UIImage imageNamed:@"donut.png"];
 	CGRect frame = CGRectMake(0, 0, image.size.width, image.size.height);
 	if (self = [self initWithFrame:frame]) {
-		
 		self.opaque = NO;
+		self.layer.cornerRadius = self.frame.size.width/2;
 		donutImage = image;
+		
 	}
 	return self;
 }

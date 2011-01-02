@@ -7,15 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 @class Donut;
 
 @interface OmNomDonutsView : UIView {
 	NSMutableArray *donutArray;
-	NSTimer *timer;
+	NSTimer *donutTimer;
+	NSTimer *updateTimer;
+	
 }
 
-@property (nonatomic, retain) NSTimer *timer;
+@property (nonatomic, retain) NSTimer *donutTimer;
+@property (nonatomic, retain) NSTimer *updateTimer;
 @property (nonatomic, retain) NSMutableArray *donutArray;
 
 -(void)setUp;

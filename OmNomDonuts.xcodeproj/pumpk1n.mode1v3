@@ -329,21 +329,24 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>EF7C7E2512D034A1006AAAC1</string>
+										<string>EF7C7F4F12D092AF006AAAC1</string>
 										<key>history</key>
 										<array>
 											<string>EFD2789612CF026900D7B0F3</string>
 											<string>EFD2789712CF026900D7B0F3</string>
 											<string>EFD2789812CF026900D7B0F3</string>
-											<string>EFD2792F12CF49AC00D7B0F3</string>
 											<string>EFD2794B12CF4CCB00D7B0F3</string>
 											<string>EFD2794C12CF4CCB00D7B0F3</string>
 											<string>EFD2794D12CF4CCB00D7B0F3</string>
 											<string>EFD2795A12CF4F6F00D7B0F3</string>
 											<string>EF7C7DED12D02E7A006AAAC1</string>
-											<string>EF7C7DFE12D03044006AAAC1</string>
-											<string>EF7C7E1F12D03408006AAAC1</string>
-											<string>EF7C7E2012D03408006AAAC1</string>
+											<string>EF7C7E8B12D044FA006AAAC1</string>
+											<string>EF7C7E8C12D044FA006AAAC1</string>
+											<string>EF7C7E8D12D044FA006AAAC1</string>
+											<string>EF7C7EC612D04A25006AAAC1</string>
+											<string>EF7C7ED212D0525B006AAAC1</string>
+											<string>EF7C7F4012D08D99006AAAC1</string>
+											<string>EF7C7F4112D08D99006AAAC1</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -541,9 +544,9 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>EFD277B612CECE2000D7B0F3</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/pumpk1n/Documents/Om-Nom-Donuts/OmNomDonuts.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -568,7 +571,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>OmNomDonutsView.m</string>
+								<string>Donut.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -893,18 +896,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1074, 677}}</string>
+								<string>{{0, 0}, {490, 674}}</string>
 								<key>RubberWindowFrame</key>
-								<string>80 137 1074 718 0 0 1440 878 </string>
+								<string>80 140 490 715 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugCLIModule</string>
 							<key>Proportion</key>
-							<string>677pt</string>
+							<string>674pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>677pt</string>
+					<string>674pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -924,7 +927,7 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.consoleV3</string>
 			<key>WindowString</key>
-			<string>80 137 1074 718 0 0 1440 878 </string>
+			<string>80 140 490 715 0 0 1440 878 </string>
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
