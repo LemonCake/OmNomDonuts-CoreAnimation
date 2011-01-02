@@ -12,18 +12,16 @@
 
 @interface OmNomDonutsView : UIView {
 	NSMutableArray *donutArray;
-	Donut *donut;
-	NSTimer *time;
+	NSTimer *timer;
 }
 
 @property (nonatomic, retain) NSTimer *timer;
 @property (nonatomic, retain) NSMutableArray *donutArray;
-@property (nonatomic, retain) Donut *donut;
 
 -(void)setUp;
 -(void)animateDonutPress:(id)sender;
 -(void)addDonut;
--(void)animateDonutScaleUp:(id)sender;
--(void)animateDonutScaleDown:(id)sender;
+-(void)animateDonutScaleUp:(id)sender value:(NSUInteger)x;
+-(void)animateDonutScaleDown:(id)sender value:(NSUInteger)x;
 
 @end

@@ -12,7 +12,6 @@
 
 @implementation OmNomDonutsView
 
-@synthesize donut;
 @synthesize donutArray;
 @synthesize timer;
 
@@ -26,7 +25,6 @@
 }
 
 -(void)setUp{
-	NSLog(@"%d",arc4random()%320);
 	donutArray = [[NSMutableArray alloc] init];
 	timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(addDonut) userInfo:nil repeats:YES];
 }
@@ -55,7 +53,7 @@
 	Donut *tapDonut = (Donut *)sender; 
 	[UIView animateWithDuration:1
 						  delay:0
-						options: UIViewAnimationCurveEaseOut
+						options:UIViewAnimationCurveLinear
 					 animations:^{
 						 tapDonut.alpha = 0;
 					 } 
@@ -71,45 +69,55 @@
 	
 	Donut *idonut = [[Donut alloc] init];
 	idonut.center = CGPointMake(arc4random()%320,arc4random()%460);
-	CGAffineTransform transform = CGAffineTransformMakeScale(0.1,0.1);
+	CGAffineTransform transform = CGAffineTransformMakeScale(0.01,0.01);
 	idonut.transform = transform;
 	[donutArray addObject:idonut];
-	[self addSubview:[donutArray objectAtIndex:donutArray.count-1]];
-	
-	[self animateDonutScaleUp:[donutArray objectAtIndex:donutArray.count-1]];
+	[self addSubview:idonut];
+	[self animateDonutScaleUp:idonut value:1];
 	
 	[idonut release];
 
 
 }
 
-- (void)animateDonutScaleUp:(id)sender {
+- (void)animateDonutScaleUp:(id)sender value:(NSUInteger)x {
 	Donut *tapDonut = (Donut *)sender;
-	CGAffineTransform transform = CGAffineTransformMakeScale(.4, .4);
-	[UIView animateWithDuration:3
+	CGAffineTransform transform = CGAffineTransformMakeScale(0.01 + 0.0025*x, 0.01 + 0.0025*x);
+	[UIView animateWithDuration:3./156
 						  delay:0
-						options:UIViewAnimationCurveEaseOut
+						options:UIViewAnimationCurveLinear   
 					 animations:^{
 						 tapDonut.transform = transform;
 					 }
 					 completion:^(BOOL finished){
-						 [self animateDonutScaleDown:tapDonut];
+						 if(x+1>156){
+							 [self animateDonutScaleDown:tapDonut value:1];
+							 return;
+						 }
+						 [self animateDonutScaleUp:tapDonut value:x+1];
+							 
 					 }];
+	
 }
 
-- (void)animateDonutScaleDown:(id)sender {
+- (void)animateDonutScaleDown:(id)sender value:(NSUInteger)x {
 	Donut *tapDonut = (Donut *)sender;
-	CGAffineTransform transform = CGAffineTransformMakeScale(0.01,0.01);
-	[UIView animateWithDuration:3
+	CGAffineTransform transform = CGAffineTransformMakeScale(0.4-0.0025*x,0.4-0.0025*x);
+	[UIView animateWithDuration:3./156
 						  delay:0
-						options:UIViewAnimationCurveEaseOut
+						options:UIViewAnimationCurveLinear
 					 animations:^{
 						 tapDonut.transform = transform;
 					 }
 					 completion:^(BOOL finished){
-						 [tapDonut removeFromSuperview];
-						 [donutArray removeObjectIdenticalTo:tapDonut];
+						 if(x+1>156){
+							 [tapDonut removeFromSuperview];
+							 [donutArray removeObjectIdenticalTo:tapDonut];
+							 return;
+						 }
+						 [self animateDonutScaleDown:tapDonut value:x+1];
 					 }];
+	
 }
 
 	
@@ -123,7 +131,6 @@
 */
 
 - (void)dealloc {
-	[donut release];
 	[donutArray release];
     [super dealloc];
 }
