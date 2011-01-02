@@ -11,14 +11,15 @@
 
 @implementation Donut
 
-@synthesize donutImage;
+
 - (id)init {
-	UIImage *image = [UIImage imageNamed:@"donut.png"];
-	CGRect frame = CGRectMake(0, 0, image.size.width, image.size.height);
+	donutImage = [UIImage imageNamed:@"donut.png"];
+	CGRect frame = CGRectMake(0, 0, donutImage.size.width, donutImage.size.height);
 	if (self = [self initWithFrame:frame]) {
 		self.opaque = NO;
 		self.layer.cornerRadius = self.frame.size.width/2;
-		donutImage = image;
+		
+		self.layer.contents = (id)donutImage.CGImage;
 	}
 	return self;
 }
@@ -33,13 +34,14 @@
 }
 
 
+
+/*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
-	[donutImage drawAtPoint:CGPointMake(0, 0)];
 	 // Drawing code.
 }
-
+*/
 
 - (void)dealloc {
     [super dealloc];

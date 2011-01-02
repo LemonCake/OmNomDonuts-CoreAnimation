@@ -14,8 +14,6 @@
 	UIImage *donutImage;	
 }
 
-@property (nonatomic, retain) UIImage *donutImage;
-
 -(id)init;
 
 @end

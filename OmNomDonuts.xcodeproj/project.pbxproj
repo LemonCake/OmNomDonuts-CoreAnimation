@@ -26,7 +26,6 @@
 		EF7C7E1812D03373006AAAC1 /* donut3.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7C7E1512D03373006AAAC1 /* donut3.png */; };
 		EF7C7E5A12D03DA7006AAAC1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF7C7E5912D03DA7006AAAC1 /* QuartzCore.framework */; };
 		EFD277BA12CED0F100D7B0F3 /* bluetablecloth.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD277B912CED0F100D7B0F3 /* bluetablecloth.png */; };
-		EFD277C012CED2EA00D7B0F3 /* OmNomDonutsView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD277BF12CED2EA00D7B0F3 /* OmNomDonutsView.m */; };
 		EFD277F012CED77900D7B0F3 /* Donut.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD277EF12CED77900D7B0F3 /* Donut.m */; };
 		EFD2783512CEDD1900D7B0F3 /* bagel.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD2783412CEDD1900D7B0F3 /* bagel.png */; };
 		EFD2787C12CEFECB00D7B0F3 /* donut1.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD2787B12CEFECB00D7B0F3 /* donut1.png */; };
@@ -61,8 +60,6 @@
 		EF7C7E1512D03373006AAAC1 /* donut3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = donut3.png; sourceTree = "<group>"; };
 		EF7C7E5912D03DA7006AAAC1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EFD277B912CED0F100D7B0F3 /* bluetablecloth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluetablecloth.png; sourceTree = "<group>"; };
-		EFD277BE12CED2EA00D7B0F3 /* OmNomDonutsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OmNomDonutsView.h; sourceTree = "<group>"; };
-		EFD277BF12CED2EA00D7B0F3 /* OmNomDonutsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OmNomDonutsView.m; sourceTree = "<group>"; };
 		EFD277EE12CED77900D7B0F3 /* Donut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Donut.h; sourceTree = "<group>"; };
 		EFD277EF12CED77900D7B0F3 /* Donut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Donut.m; sourceTree = "<group>"; };
 		EFD2783412CEDD1900D7B0F3 /* bagel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bagel.png; sourceTree = "<group>"; };
@@ -100,8 +97,6 @@
 				1D3623250D0F684500981E51 /* OmNomDonutsAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* OmNomDonutsViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* OmNomDonutsViewController.m */,
-				EFD277BE12CED2EA00D7B0F3 /* OmNomDonutsView.h */,
-				EFD277BF12CED2EA00D7B0F3 /* OmNomDonutsView.m */,
 				EFD277EE12CED77900D7B0F3 /* Donut.h */,
 				EFD277EF12CED77900D7B0F3 /* Donut.m */,
 			);
@@ -244,7 +239,6 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* OmNomDonutsAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* OmNomDonutsViewController.m in Sources */,
-				EFD277C012CED2EA00D7B0F3 /* OmNomDonutsView.m in Sources */,
 				EFD277F012CED77900D7B0F3 /* Donut.m in Sources */,
 				9B1ACD9812D03B6000BFD84E /* SingletonSoundManager.m in Sources */,
 			);
