@@ -12,14 +12,13 @@
 @implementation Donut
 
 @synthesize donutImage;
-
 - (id)init {
 	UIImage *image = [UIImage imageNamed:@"donut.png"];
 	CGRect frame = CGRectMake(0, 0, image.size.width, image.size.height);
 	if (self = [self initWithFrame:frame]) {
-		
 		self.opaque = NO;
 		donutImage = image;
+
 	}
 	return self;
 }

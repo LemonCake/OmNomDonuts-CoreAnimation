@@ -10,8 +10,7 @@
 
 
 @interface Donut : UIView {
-	UIImage *donutImage;
-	
+	UIImage *donutImage;	
 }
 
 @property (nonatomic, retain) UIImage *donutImage;

@@ -8,6 +8,7 @@
 
 #import "OmNomDonutsView.h"
 #import "Donut.h"
+#import "Common.h"
 
 
 @implementation OmNomDonutsView
@@ -27,6 +28,8 @@
 -(void)setUp{
 	donutArray = [[NSMutableArray alloc] init];
 	timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(addDonut) userInfo:nil repeats:YES];
+	sharedSoundManager = [SingletonSoundManager sharedSoundManager];
+	[sharedSoundManager loadSoundWithKey:@"omnom" fileName:@"omnom" fileExt:@"caf" frequency:44100];
 }
 
 - (id)initWithFrame:(CGRect)frame {
@@ -43,8 +46,11 @@
 	UITouch *touch = [touches anyObject];
 	// If the touch was on the donut, do stuff
 	for(id object in donutArray){
-		if ([touch view] == object) 
+		if ([touch view] == object)
+		{
 			[self animateDonutPress:object];
+			[sharedSoundManager playSoundWithKey:@"omnom" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
+		}
 	}
 }
 

@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SingletonSoundManager.h"
 
 @class Donut;
 
 @interface OmNomDonutsView : UIView {
 	NSMutableArray *donutArray;
 	NSTimer *timer;
+	SingletonSoundManager *sharedSoundManager;
 }
 
 @property (nonatomic, retain) NSTimer *timer;
