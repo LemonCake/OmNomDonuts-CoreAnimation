@@ -10,18 +10,46 @@
 
 
 @implementation Donut
-
+@synthesize hitcount;
 
 - (id)init {
-	donutImage = [UIImage imageNamed:@"donut.png"];
+	hitcount = 0;
+	donutImage = [UIImage	imageNamed:self.nextImage];
 	CGRect frame = CGRectMake(0, 0, donutImage.size.width, donutImage.size.height);
 	if (self = [self initWithFrame:frame]) {
 		self.opaque = NO;
 		self.layer.cornerRadius = self.frame.size.width/2;
-		
 		self.layer.contents = (id)donutImage.CGImage;
 	}
 	return self;
+}
+
+- (void)changeImage {
+	hitcount++;
+	donutImage = [UIImage imageNamed:self.nextImage];
+	self.layer.contents = (id)donutImage.CGImage;
+	return;
+}
+
+- (id)nextImage {
+	NSString *filename;
+	
+	switch (hitcount)
+	{
+		case 0:
+			filename = @"donut.png";
+			break;
+		case 1:
+			filename = @"donut2.png";
+			break;
+		case 2:
+			filename = @"donut3.png";
+			break;
+		default:
+			break;
+	}
+	NSLog(@"Changing to: %s", filename);
+	return filename;
 }
 
 - (id)initWithFrame:(CGRect)frame {

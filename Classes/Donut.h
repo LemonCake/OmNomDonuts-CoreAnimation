@@ -11,9 +11,13 @@
 
 
 @interface Donut : UIView {
-	UIImage *donutImage;	
+	UIImage *donutImage;
+	NSUInteger hitcount;
 }
 
+@property NSUInteger hitcount;
 -(id)init;
+-(id)nextImage;
+-(void)changeImage;
 
 @end

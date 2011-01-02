@@ -45,7 +45,7 @@
 -(void)setUp{
 	donutArray = [[NSMutableArray alloc] init];
 	tapDonutArray = [[NSMutableArray alloc] init];
-	donutTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(addDonut) userInfo:nil repeats:YES];
+	donutTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(addDonut) userInfo:nil repeats:YES];
 	sharedSoundManager = [SingletonSoundManager sharedSoundManager];
 	[sharedSoundManager loadSoundWithKey:@"omnom" fileName:@"omnom" fileExt:@"caf" frequency:44100];
 }
@@ -79,7 +79,6 @@
 			if(distanceToCenter <= tapDonut.frame.size.width/2) {
 				NSLog(@"HIT");
 				[self animateDonutPress:tapDonut];
-				[sharedSoundManager playSoundWithKey:@"omnom" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
 			}
 		}
 	}
@@ -88,8 +87,11 @@
 #if 1
 - (void)animateDonutPress:(id)sender {
 	NSLog(@"animateDonutPress");
-	Donut *tapDonut = (Donut *)sender; 
-	[UIView animateWithDuration:0.5
+	Donut *tapDonut = (Donut *)sender;
+	
+	// Removes donut from view if hitcount is >= 2 else load the next donut image
+	if(tapDonut.hitcount >= 2) {
+		 [UIView animateWithDuration:0.5
 						  delay:0
 						options:UIViewAnimationCurveLinear
 					 animations:^{
@@ -98,8 +100,11 @@
 					 completion:^(BOOL finished){
 						 [tapDonut removeFromSuperview];
 						 [donutArray removeObjectIdenticalTo:tapDonut];
-						 
 					 }];
+		[sharedSoundManager playSoundWithKey:@"omnom" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
+	} else {
+		tapDonut.changeImage;
+	}
 	
 }
 
