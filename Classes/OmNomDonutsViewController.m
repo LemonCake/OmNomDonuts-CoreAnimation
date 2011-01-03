@@ -88,7 +88,6 @@
 			if(distanceToCenter <= hitDonut.frame.size.width/2) {
 				NSLog(@"HIT!");
 				[self animateDonutPress:hitDonut];
-				[sharedSoundManager playSoundWithKey:@"omnom" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
 			}
 		}
 	}
