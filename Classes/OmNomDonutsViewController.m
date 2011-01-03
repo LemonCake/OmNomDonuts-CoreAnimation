@@ -53,6 +53,10 @@
 	[[NSRunLoop currentRunLoop] addTimer:donutTimer forMode:NSDefaultRunLoopMode];
 	sharedSoundManager = [SingletonSoundManager sharedSoundManager];
 	[sharedSoundManager loadSoundWithKey:@"omnom" fileName:@"omnom" fileExt:@"caf" frequency:44100];
+	[sharedSoundManager loadSoundWithKey:@"hit" fileName:@"hit" fileExt:@"caf" frequency:44100];
+	[sharedSoundManager loadSoundWithKey:@"miss" fileName:@"miss" fileExt:@"caf" frequency:44100];
+	[sharedSoundManager loadBackgroundMusicWithKey:@"theme" fileName:@"cooking" fileExt:@"mp3"];
+	[sharedSoundManager playMusicWithKey:@"theme" timesToRepeat:-1];
 }
 
 - (void)addDonut {
@@ -86,6 +90,8 @@
 				[self animateDonutPress:hitDonut];
 				[sharedSoundManager playSoundWithKey:@"omnom" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
 			}
+		} else if (touch.view == self.view) {
+			[sharedSoundManager playSoundWithKey:@"miss" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
 		}
 	}
 }
@@ -109,8 +115,11 @@
 #if 1
 - (void)animateDonutPress:(id)sender {
 	NSLog(@"animateDonutPress");
-	Donut *hitDonut = (Donut *)sender; 
-	[UIView animateWithDuration:0.5
+	Donut *hitDonut = (Donut *)sender;
+	
+	// Removes donut from view if hitcount is >= 2 else load the next donut image
+	if(hitDonut.hitcount >= 2) {
+		 [UIView animateWithDuration:0.5
 						  delay:0
 						options:UIViewAnimationCurveLinear
 					 animations:^{
@@ -121,8 +130,12 @@
 						 [hitDonutArray addObject:hitDonut];
 						 [self checkProgress];
 						 [donutArray removeObjectIdenticalTo:hitDonut];
-						 
 					 }];
+		[sharedSoundManager playSoundWithKey:@"omnom" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
+	} else {
+		hitDonut.changeImage;
+		[sharedSoundManager playSoundWithKey:@"hit" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
+	}
 	
 }
 
