@@ -50,6 +50,8 @@
 	[sharedSoundManager loadSoundWithKey:@"omnom" fileName:@"omnom" fileExt:@"caf" frequency:44100];
 	[sharedSoundManager loadSoundWithKey:@"hit" fileName:@"hit" fileExt:@"caf" frequency:44100];
 	[sharedSoundManager loadSoundWithKey:@"miss" fileName:@"miss" fileExt:@"caf" frequency:44100];
+	[sharedSoundManager loadBackgroundMusicWithKey:@"theme" fileName:@"theme" fileExt:@"caf"];
+	[sharedSoundManager playMusicWithKey:@"theme" timesToRepeat:-1];
 }
 
 - (void)addDonut {

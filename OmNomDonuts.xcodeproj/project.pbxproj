@@ -25,6 +25,7 @@
 		9BC2C72712D14A5C00F7704B /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BC2C72512D14A5C00F7704B /* icon.png */; };
 		9BC2C72812D14A5C00F7704B /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BC2C72612D14A5C00F7704B /* icon@2x.png */; };
 		9BC2C74912D14C7A00F7704B /* miss.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9BC2C74812D14C7A00F7704B /* miss.caf */; };
+		9BC2C75F12D151A700F7704B /* theme.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9BC2C75E12D151A700F7704B /* theme.caf */; };
 		EF7C7E1612D03373006AAAC1 /* donut.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7C7E1312D03373006AAAC1 /* donut.png */; };
 		EF7C7E1712D03373006AAAC1 /* donut2.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7C7E1412D03373006AAAC1 /* donut2.png */; };
 		EF7C7E1812D03373006AAAC1 /* donut3.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7C7E1512D03373006AAAC1 /* donut3.png */; };
@@ -63,6 +64,7 @@
 		9BC2C72512D14A5C00F7704B /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		9BC2C72612D14A5C00F7704B /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		9BC2C74812D14C7A00F7704B /* miss.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = miss.caf; sourceTree = "<group>"; };
+		9BC2C75E12D151A700F7704B /* theme.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = theme.caf; sourceTree = "<group>"; };
 		EF7C7E1312D03373006AAAC1 /* donut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = donut.png; sourceTree = "<group>"; };
 		EF7C7E1412D03373006AAAC1 /* donut2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = donut2.png; sourceTree = "<group>"; };
 		EF7C7E1512D03373006AAAC1 /* donut3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = donut3.png; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				EF7C7E1312D03373006AAAC1 /* donut.png */,
 				EF7C7E1412D03373006AAAC1 /* donut2.png */,
 				EF7C7E1512D03373006AAAC1 /* donut3.png */,
+				9BC2C75E12D151A700F7704B /* theme.caf */,
 				EFD2788312CEFFBA00D7B0F3 /* plaindonut_50x50.png */,
 				EFD2787B12CEFECB00D7B0F3 /* donut1.png */,
 				EFD2787F12CEFF1F00D7B0F3 /* donut1_60x60.png */,
@@ -242,6 +245,7 @@
 				9BC2C72712D14A5C00F7704B /* icon.png in Resources */,
 				9BC2C72812D14A5C00F7704B /* icon@2x.png in Resources */,
 				9BC2C74912D14C7A00F7704B /* miss.caf in Resources */,
+				9BC2C75F12D151A700F7704B /* theme.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
