@@ -15,7 +15,9 @@
 
 @synthesize donutArray;
 @synthesize donutTimer;
-@synthesize tapDonutArray;
+@synthesize donutTimerHard;
+@synthesize hitDonutArray;
+@synthesize missDonutArray;
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -44,8 +46,11 @@
 
 -(void)setUp{
 	donutArray = [[NSMutableArray alloc] init];
-	tapDonutArray = [[NSMutableArray alloc] init];
-	donutTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(addDonut) userInfo:nil repeats:YES];
+	hitDonutArray = [[NSMutableArray alloc] init];
+	missDonutArray = [[NSMutableArray alloc] init];
+	donutTimer = [NSTimer timerWithTimeInterval:2 target:self selector:@selector(addDonut) userInfo:nil repeats:YES];
+	donutTimerHard = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(addDonut) userInfo:nil repeats:YES];
+	[[NSRunLoop currentRunLoop] addTimer:donutTimer forMode:NSDefaultRunLoopMode];
 	sharedSoundManager = [SingletonSoundManager sharedSoundManager];
 	[sharedSoundManager loadSoundWithKey:@"omnom" fileName:@"omnom" fileExt:@"caf" frequency:44100];
 }
@@ -67,37 +72,55 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	UITouch *touch = [touches anyObject];
 	// If the touch was on the donut, do stuff
-	for(Donut* tapDonut in donutArray){
-		if ([touch view] == tapDonut) {
+	for(Donut* hitDonut in donutArray){
+		if ([touch view] == hitDonut) {
 			CGPoint point = [touch locationInView:self.view];
-			CGPoint donutCenter = tapDonut.center;
+			CGPoint donutCenter = hitDonut.center;
 			
 			float xDifference = abs(point.x-donutCenter.x);
 			float yDifference = abs(point.y-donutCenter.y);
 			float distanceToCenter = sqrt(xDifference*xDifference+yDifference*yDifference);
 			
-			if(distanceToCenter <= tapDonut.frame.size.width/2) {
+			if(distanceToCenter <= hitDonut.frame.size.width/2) {
 				NSLog(@"HIT");
-				[self animateDonutPress:tapDonut];
+				[self animateDonutPress:hitDonut];
 				[sharedSoundManager playSoundWithKey:@"omnom" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
 			}
 		}
 	}
 }
 
+-(void)checkProgress{
+	if (missDonutArray.count == 5) {
+		//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You Lose!" message:@"Missed 5 Donuts." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		//[alert show];
+		//[alert release];
+	}
+	if (hitDonutArray.count == 10){
+		NSLog(@"Switching to hard mode");
+		[donutTimer invalidate];
+		[[NSRunLoop currentRunLoop] addTimer:donutTimerHard forMode:NSDefaultRunLoopMode];
+	}
+		
+		
+	
+}
+
 #if 1
 - (void)animateDonutPress:(id)sender {
 	NSLog(@"animateDonutPress");
-	Donut *tapDonut = (Donut *)sender; 
+	Donut *hitDonut = (Donut *)sender; 
 	[UIView animateWithDuration:0.5
 						  delay:0
 						options:UIViewAnimationCurveLinear
 					 animations:^{
-						 tapDonut.alpha = 0;
+						 hitDonut.alpha = 0;
 					 } 
 					 completion:^(BOOL finished){
-						 [tapDonut removeFromSuperview];
-						 [donutArray removeObjectIdenticalTo:tapDonut];
+						 [hitDonut removeFromSuperview];
+						 [hitDonutArray addObject:hitDonut];
+						 [self checkProgress];
+						 [donutArray removeObjectIdenticalTo:hitDonut];
 						 
 					 }];
 	
@@ -126,43 +149,44 @@
 #if 1
 
 - (void)animateDonutScaleUp:(id)sender value:(NSUInteger)x {
-	Donut *tapDonut = (Donut *)sender;
+	Donut *lastDonut = (Donut *)sender;
 	CGAffineTransform transform = CGAffineTransformMakeScale(0.01 + 0.005*x, 0.01 + 0.005*x);
 	[UIView animateWithDuration:2./38
 						  delay:0
 						options:UIViewAnimationCurveLinear   
 					 animations:^{
-						 tapDonut.transform = transform;
+						 lastDonut.transform = transform;
 					 }
 					 completion:^(BOOL finished){
 						 if(x>37){
-							 [self animateDonutScaleDown:tapDonut value:1];
+							 [self animateDonutScaleDown:lastDonut value:1];
 							 return;
 						 }
-						 [self animateDonutScaleUp:tapDonut value:x+1];
+						 [self animateDonutScaleUp:lastDonut value:x+1];
 						 
 					 }];
 	
 }
 
 - (void)animateDonutScaleDown:(id)sender value:(NSUInteger)x {
-	Donut *tapDonut = (Donut *)sender;
+	Donut *lastDonut = (Donut *)sender;
 	CGAffineTransform transform = CGAffineTransformMakeScale(0.2-0.005*x,0.2-0.005*x);
 	[UIView animateWithDuration:2./38
 						  delay:0
 						options:UIViewAnimationCurveLinear
 					 animations:^{
-						 tapDonut.transform = transform;
+						 lastDonut.transform = transform;
 					 }
 					 completion:^(BOOL finished){
 						 if(x>37){
-							 [tapDonut removeFromSuperview];
-					
-							 [donutArray removeObjectIdenticalTo:tapDonut];
-							 
+							 [lastDonut removeFromSuperview];
+							 [missDonutArray addObject:lastDonut];
+							 NSLog(@"miss");
+							 [self checkProgress];
+							 [donutArray removeObjectIdenticalTo:lastDonut];
 							 return;
 						 }
-						 [self animateDonutScaleDown:tapDonut value:x+1];
+						 [self animateDonutScaleDown:lastDonut value:x+1];
 					 }];
 	
 }
@@ -205,7 +229,7 @@
  */
 
 #endif
-
+/*
 - (void)animationDidStart:(CAAnimation *)theAnimation {
 	
 	for (Donut *tapDonut in donutArray) {
@@ -235,7 +259,7 @@
 		NSLog(@"Donut Array now has %d members",donutArray.count);
 	}
 }
-
+*/
 
 
 
@@ -261,8 +285,10 @@
 
 
 - (void)dealloc {
-	[tapDonutArray release];
+	[hitDonutArray release];
 	[donutTimer release];
+	[donutTimerHard release];
+	[missDonutArray release];
 	[donutArray release];
     [super dealloc];
 }

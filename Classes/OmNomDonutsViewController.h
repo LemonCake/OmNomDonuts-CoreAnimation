@@ -14,12 +14,16 @@
 
 @interface OmNomDonutsViewController : UIViewController {
 	NSMutableArray *donutArray;
-	NSMutableArray *tapDonutArray;
+	NSMutableArray *hitDonutArray;
+	NSMutableArray *missDonutArray;
 	NSTimer *donutTimer;
+	NSTimer *donutTimerHard;
 	SingletonSoundManager *sharedSoundManager;
 }
 
-@property (nonatomic, retain) NSMutableArray *tapDonutArray;
+@property (nonatomic, retain) NSTimer *donutTimerHard;
+@property (nonatomic, retain) NSMutableArray *hitDonutArray;
+@property (nonatomic, retain) NSMutableArray *missDonutArray;
 @property (nonatomic, retain) NSTimer *donutTimer;
 @property (nonatomic, retain) NSMutableArray *donutArray;
 
@@ -28,6 +32,7 @@
 -(void)addDonut;
 -(void)animateDonutScaleUp:(id)sender value:(NSUInteger)x;
 -(void)animateDonutScaleDown:(id)sender value:(NSUInteger)x;
+-(void)checkProgress;
 
 @end
 

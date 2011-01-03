@@ -18,8 +18,12 @@
 	if (self = [self initWithFrame:frame]) {
 		self.opaque = NO;
 		self.layer.cornerRadius = self.frame.size.width/2;
-		
 		self.layer.contents = (id)donutImage.CGImage;
+		self.layer.shadowOffset = CGSizeMake(20	, 20);
+		self.layer.shadowRadius = 10.0;
+		self.layer.shadowColor = [UIColor blackColor].CGColor;
+		self.layer.shadowOpacity = 0.5;
+		
 	}
 	return self;
 }
@@ -32,7 +36,6 @@
     }
     return self;
 }
-
 
 
 /*
