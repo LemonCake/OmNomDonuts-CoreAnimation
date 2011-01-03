@@ -19,6 +19,8 @@
 @synthesize donutLoop;
 @synthesize gameStats;
 @synthesize missDonutArray;
+@synthesize scoreLabel;
+@synthesize accLabel;
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -55,7 +57,6 @@
 	CALayer *theLayer = self.view.layer;
 	UIImage *image = [UIImage imageNamed:@"gamebg.png"];
 	theLayer.contents = (id)image.CGImage;
-	
 	donutArray = [[NSMutableArray alloc] init];
 	hitDonutArray = [[NSMutableArray alloc] init];
 	missDonutArray = [[NSMutableArray alloc] init];
@@ -72,7 +73,7 @@
 
 - (void)addDonut {
 	Donut *idonut = [[Donut alloc] init];
-	idonut.center = CGPointMake(arc4random()%320,arc4random()%460);
+	idonut.center = CGPointMake(20+arc4random()%280,60+arc4random()%380);
 	CGAffineTransform transform = CGAffineTransformMakeScale(0.01,0.01);
 	idonut.transform = transform;
 	
@@ -98,6 +99,7 @@
 			
 			if(distanceToCenter <= hitDonut.frame.size.width/2) {
 				NSLog(@"HIT!");
+				[self updateProgress:@"hit"];
 				[self animateDonutPress:hitDonut];
 			}
 		}
@@ -105,7 +107,7 @@
 	if (touch.view == self.view) {
 		NSLog(@"MISS");
 		[self updateProgress:@"miss"];
-		[sharedSoundManager playSoundWithKey:@"miss" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
+		[sharedSoundManager playSoundWithKey:@"miss" gain:0.5f pitch:0.5f location:Vector2fZero shouldLoop:NO];
 	}
 }
 
@@ -121,7 +123,7 @@
 	NSUInteger miss = [missCount integerValue];
 	
 	NSNumber *scoreValue = [gameStats objectForKey:@"SCORE"];
-	NSUInteger score = [scoreValue integerValue];
+	NSInteger score = [scoreValue integerValue];
 	
 	NSNumber *accValue = [gameStats objectForKey:@"ACCURACY"];
 	float acc = [accValue floatValue];
@@ -147,7 +149,6 @@
 				break;
 		}
 		hit++;
-		score = score + 100;
 	}
 	else if (context == @"miss"){
 		NSLog(@"missupdate");
@@ -158,8 +159,16 @@
 		NSLog(@"dispupdate");
 		score = score - 20;
 	}
+	else if (context == @"score"){
+		score = score + 100;
+	}
 	
-	acc = (float)hit/(hit+miss);
+	acc = (float)hit/(hit+miss)*100;
+	if(score < 0){
+		score = 0;
+	}
+	scoreLabel.text = [NSString stringWithFormat:@"Score: %d",score];
+	accLabel.text = [NSString stringWithFormat:@"Accuracy: %.2f%%",acc];
 	[gameStats setObject:[NSNumber numberWithFloat:acc] forKey:@"ACCURACY"];
 	[gameStats setObject:[NSNumber numberWithInt:hit] forKey:@"HITCOUNT"];
 	[gameStats setObject:[NSNumber numberWithInt:miss] forKey:@"MISSCOUNT"];
@@ -172,22 +181,23 @@
 	
 	// Removes donut from view if hitcount is >= 2 else load the next donut image
 	if(hitDonut.hitcount >= 2) {
-		 [UIView animateWithDuration:0.5
-						  delay:0
-						options:UIViewAnimationCurveLinear
-					 animations:^{
-						 hitDonut.alpha = 0;
-					 } 
-					 completion:^(BOOL finished){
-						 [hitDonut removeFromSuperview];
-						 [hitDonutArray addObject:hitDonut];
-						 [donutArray removeObjectIdenticalTo:hitDonut];
-						 [self updateProgress:@"hit"];
-					 }];
+		[self updateProgress:@"score"];
+		[UIView animateWithDuration:0.5
+							  delay:0
+							options:UIViewAnimationCurveLinear
+						 animations:^{
+							 hitDonut.alpha = 0;
+						 } 
+						 completion:^(BOOL finished){
+							 [hitDonut removeFromSuperview];
+							 [hitDonutArray addObject:hitDonut];
+							 [donutArray removeObjectIdenticalTo:hitDonut];
+						 
+						 }];
 		[sharedSoundManager playSoundWithKey:@"omnom" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
 	} else {
 		hitDonut.changeImage;
-		[sharedSoundManager playSoundWithKey:@"hit" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
+		[sharedSoundManager playSoundWithKey:@"hit" gain:0.5f pitch:0.5f location:Vector2fZero shouldLoop:NO];
 	}
 	
 }
@@ -347,6 +357,8 @@
 }
 
 - (void)viewDidUnload {
+	self.accLabel = nil;
+	self.scoreLabel = nil;
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }

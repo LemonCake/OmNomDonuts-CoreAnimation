@@ -14,6 +14,8 @@
 @class SingletonSoundManager;
 
 @interface OmNomDonutsViewController : UIViewController {
+	UILabel *scoreLabel;
+	UILabel *accLabel;
 	NSMutableArray *donutArray;
 	NSMutableArray *hitDonutArray;
 	NSMutableArray *missDonutArray;
@@ -23,6 +25,8 @@
 	NSMutableDictionary *gameStats;
 }
 
+@property (nonatomic, retain) IBOutlet UILabel *scoreLabel;
+@property (nonatomic, retain) IBOutlet UILabel *accLabel;
 @property (nonatomic, retain) NSMutableDictionary *gameStats;
 @property (nonatomic, retain) NSRunLoop *donutLoop;
 @property (nonatomic, retain) NSMutableArray *hitDonutArray;
