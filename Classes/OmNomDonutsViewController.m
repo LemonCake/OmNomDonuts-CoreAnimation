@@ -49,7 +49,7 @@
 	sharedSoundManager = [SingletonSoundManager sharedSoundManager];
 	[sharedSoundManager loadSoundWithKey:@"omnom" fileName:@"omnom" fileExt:@"caf" frequency:44100];
 	[sharedSoundManager loadSoundWithKey:@"hit" fileName:@"hit" fileExt:@"caf" frequency:44100];
-
+	[sharedSoundManager loadSoundWithKey:@"miss" fileName:@"miss" fileExt:@"caf" frequency:44100];
 }
 
 - (void)addDonut {
@@ -70,7 +70,7 @@
 	UITouch *touch = [touches anyObject];
 	// If the touch was on the donut, do stuff
 	for(Donut* tapDonut in donutArray){
-		if ([touch view] == tapDonut) {
+		if (touch.view == tapDonut) {
 			CGPoint point = [touch locationInView:self.view];
 			CGPoint donutCenter = tapDonut.center;
 			
@@ -82,6 +82,8 @@
 				NSLog(@"HIT");
 				[self animateDonutPress:tapDonut];
 			}
+		} else if (touch.view == self.view) {
+			[sharedSoundManager playSoundWithKey:@"miss" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
 		}
 	}
 }
