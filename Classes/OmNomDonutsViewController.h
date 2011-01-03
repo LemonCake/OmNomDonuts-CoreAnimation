@@ -16,12 +16,12 @@
 	NSMutableArray *donutArray;
 	NSMutableArray *hitDonutArray;
 	NSMutableArray *missDonutArray;
+	NSRunLoop *donutLoop;
 	NSTimer *donutTimer;
-	NSTimer *donutTimerHard;
 	SingletonSoundManager *sharedSoundManager;
 }
 
-@property (nonatomic, retain) NSTimer *donutTimerHard;
+@property (nonatomic, retain) NSRunLoop *donutLoop;
 @property (nonatomic, retain) NSMutableArray *hitDonutArray;
 @property (nonatomic, retain) NSMutableArray *missDonutArray;
 @property (nonatomic, retain) NSTimer *donutTimer;
@@ -32,6 +32,7 @@
 -(void)addDonut;
 -(void)animateDonutScaleUp:(id)sender value:(NSUInteger)x;
 -(void)animateDonutScaleDown:(id)sender value:(NSUInteger)x;
+-(void)checkLose;
 -(void)checkProgress;
 
 @end

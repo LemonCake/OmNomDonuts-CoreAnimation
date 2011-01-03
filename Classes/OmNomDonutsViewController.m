@@ -15,8 +15,8 @@
 
 @synthesize donutArray;
 @synthesize donutTimer;
-@synthesize donutTimerHard;
 @synthesize hitDonutArray;
+@synthesize donutLoop;
 @synthesize missDonutArray;
 
 /*
@@ -48,9 +48,9 @@
 	donutArray = [[NSMutableArray alloc] init];
 	hitDonutArray = [[NSMutableArray alloc] init];
 	missDonutArray = [[NSMutableArray alloc] init];
+	donutLoop = [NSRunLoop currentRunLoop];
 	donutTimer = [NSTimer timerWithTimeInterval:2 target:self selector:@selector(addDonut) userInfo:nil repeats:YES];
-	donutTimerHard = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(addDonut) userInfo:nil repeats:YES];
-	[[NSRunLoop currentRunLoop] addTimer:donutTimer forMode:NSDefaultRunLoopMode];
+	[donutLoop addTimer:donutTimer forMode:NSDefaultRunLoopMode];
 	sharedSoundManager = [SingletonSoundManager sharedSoundManager];
 	[sharedSoundManager loadSoundWithKey:@"omnom" fileName:@"omnom" fileExt:@"caf" frequency:44100];
 	[sharedSoundManager loadSoundWithKey:@"hit" fileName:@"hit" fileExt:@"caf" frequency:44100];
@@ -67,7 +67,7 @@
 	
 	[donutArray addObject:idonut];
 	
-	NSLog(@"Donut Array now has %d members",donutArray.count);
+	NSLog(@"Adding Donut!");
 	[self.view addSubview:idonut];
 	[self animateDonutScaleUp:idonut value:1];
 	[idonut release];
@@ -86,35 +86,48 @@
 			float distanceToCenter = sqrt(xDifference*xDifference+yDifference*yDifference);
 			
 			if(distanceToCenter <= hitDonut.frame.size.width/2) {
-				NSLog(@"HIT");
+				NSLog(@"HIT!");
 				[self animateDonutPress:hitDonut];
 				[sharedSoundManager playSoundWithKey:@"omnom" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
 			}
-		} else if (touch.view == self.view) {
-			[sharedSoundManager playSoundWithKey:@"miss" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
 		}
+	}
+	if (touch.view == self.view) {
+		NSLog(@"MISS");
+		[sharedSoundManager playSoundWithKey:@"miss" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
 	}
 }
 
 -(void)checkProgress{
+
+	if (hitDonutArray.count == 5){
+		NSLog(@"Switching to hard mode");
+		[donutTimer invalidate];
+		donutTimer = nil;
+		donutTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(addDonut) userInfo:nil repeats:YES];
+		[donutLoop addTimer:donutTimer forMode:NSDefaultRunLoopMode];
+	}
+	
+	if(hitDonutArray.count == 10){
+		NSLog(@"Switching to insane mode");
+		[donutTimer invalidate];
+		donutTimer = nil;
+		donutTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(addDonut) userInfo:nil repeats:YES];
+		[donutLoop addTimer:donutTimer forMode:NSDefaultRunLoopMode];
+	}
+	
+}
+
+-(void)checkLose{
 	if (missDonutArray.count == 5) {
 		//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You Lose!" message:@"Missed 5 Donuts." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		//[alert show];
 		//[alert release];
 	}
-	if (hitDonutArray.count == 10){
-		NSLog(@"Switching to hard mode");
-		[donutTimer invalidate];
-		[[NSRunLoop currentRunLoop] addTimer:donutTimerHard forMode:NSDefaultRunLoopMode];
-	}
-		
-		
-	
 }
 
 #if 1
 - (void)animateDonutPress:(id)sender {
-	NSLog(@"animateDonutPress");
 	Donut *hitDonut = (Donut *)sender;
 	
 	// Removes donut from view if hitcount is >= 2 else load the next donut image
@@ -128,8 +141,8 @@
 					 completion:^(BOOL finished){
 						 [hitDonut removeFromSuperview];
 						 [hitDonutArray addObject:hitDonut];
-						 [self checkProgress];
 						 [donutArray removeObjectIdenticalTo:hitDonut];
+						 [self checkProgress];
 					 }];
 		[sharedSoundManager playSoundWithKey:@"omnom" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
 	} else {
@@ -192,10 +205,12 @@
 					 }
 					 completion:^(BOOL finished){
 						 if(x>37){
+							 if (lastDonut.hitcount < 2) {
+								 [missDonutArray addObject:lastDonut];
+								 NSLog(@"Donut disappeared!");
+							 }
 							 [lastDonut removeFromSuperview];
-							 [missDonutArray addObject:lastDonut];
-							 NSLog(@"miss");
-							 [self checkProgress];
+							 [self checkLose];
 							 [donutArray removeObjectIdenticalTo:lastDonut];
 							 return;
 						 }
@@ -299,8 +314,8 @@
 
 - (void)dealloc {
 	[hitDonutArray release];
+	[donutLoop release];
 	[donutTimer release];
-	[donutTimerHard release];
 	[missDonutArray release];
 	[donutArray release];
     [super dealloc];

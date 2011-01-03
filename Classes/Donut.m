@@ -53,7 +53,7 @@
 		default:
 			break;
 	}
-	NSLog(@"Changing to: %s", filename);
+	NSLog(@"Changing to: %@", filename);
 	return filename;
 }
 
