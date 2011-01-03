@@ -17,6 +17,7 @@
 @synthesize donutTimer;
 @synthesize hitDonutArray;
 @synthesize donutLoop;
+@synthesize gameStats;
 @synthesize missDonutArray;
 
 /*
@@ -45,6 +46,16 @@
 }
 
 -(void)setUp{
+	gameStats = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+								 [NSNumber numberWithInt:0],@"SCORE",[NSNumber numberWithFloat:0],@"ACCURACY",
+								 [NSNumber numberWithInt:0],@"MISSCOUNT",
+								 [NSNumber numberWithInt:0],@"HITCOUNT",nil];
+	NSLog(@"gameStats init: %@", gameStats);
+	
+	CALayer *theLayer = self.view.layer;
+	UIImage *image = [UIImage imageNamed:@"gamebg.png"];
+	theLayer.contents = (id)image.CGImage;
+	
 	donutArray = [[NSMutableArray alloc] init];
 	hitDonutArray = [[NSMutableArray alloc] init];
 	missDonutArray = [[NSMutableArray alloc] init];
@@ -88,42 +99,71 @@
 			if(distanceToCenter <= hitDonut.frame.size.width/2) {
 				NSLog(@"HIT!");
 				[self animateDonutPress:hitDonut];
-				[sharedSoundManager playSoundWithKey:@"omnom" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
 			}
 		}
 	}
 	if (touch.view == self.view) {
 		NSLog(@"MISS");
+		[self updateProgress:@"miss"];
 		[sharedSoundManager playSoundWithKey:@"miss" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
 	}
 }
 
--(void)checkProgress{
+-(void)updateProgress:(id)sender{
 
-	if (hitDonutArray.count == 5){
-		NSLog(@"Switching to hard mode");
-		[donutTimer invalidate];
-		donutTimer = nil;
-		donutTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(addDonut) userInfo:nil repeats:YES];
-		[donutLoop addTimer:donutTimer forMode:NSDefaultRunLoopMode];
+	NSString *context = (NSString *)sender;
+	NSLog(@"update");
+	NSLog(@"gameStats: %@", gameStats);
+	NSNumber *hitCount = [gameStats objectForKey:@"HITCOUNT"];
+	NSUInteger hit = [hitCount integerValue];
+
+	NSNumber *missCount = [gameStats objectForKey:@"MISSCOUNT"];
+	NSUInteger miss = [missCount integerValue];
+	
+	NSNumber *scoreValue = [gameStats objectForKey:@"SCORE"];
+	NSUInteger score = [scoreValue integerValue];
+	
+	NSNumber *accValue = [gameStats objectForKey:@"ACCURACY"];
+	float acc = [accValue floatValue];
+	
+	if(context == @"hit"){
+		NSLog(@"hitupdate");
+		switch (hitDonutArray.count) {
+			case 5:
+				NSLog(@"Switching to hard mode");
+				[donutTimer invalidate];
+				donutTimer = nil;
+				donutTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(addDonut) userInfo:nil repeats:YES];
+				[donutLoop addTimer:donutTimer forMode:NSDefaultRunLoopMode];
+				break;
+			case 10:
+				NSLog(@"Switching to insane mode");
+				[donutTimer invalidate];
+				donutTimer = nil;
+				donutTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(addDonut) userInfo:nil repeats:YES];
+				[donutLoop addTimer:donutTimer forMode:NSDefaultRunLoopMode];
+				break;
+			default:
+				break;
+		}
+		hit++;
+		score = score + 100;
+	}
+	else if (context == @"miss"){
+		NSLog(@"missupdate");
+		miss++;
+		score = score - 10;
+	}
+	else if (context == @"disp"){
+		NSLog(@"dispupdate");
+		score = score - 20;
 	}
 	
-	if(hitDonutArray.count == 10){
-		NSLog(@"Switching to insane mode");
-		[donutTimer invalidate];
-		donutTimer = nil;
-		donutTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(addDonut) userInfo:nil repeats:YES];
-		[donutLoop addTimer:donutTimer forMode:NSDefaultRunLoopMode];
-	}
-	
-}
-
--(void)checkLose{
-	if (missDonutArray.count == 5) {
-		//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You Lose!" message:@"Missed 5 Donuts." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		//[alert show];
-		//[alert release];
-	}
+	acc = (float)hit/(hit+miss);
+	[gameStats setObject:[NSNumber numberWithFloat:acc] forKey:@"ACCURACY"];
+	[gameStats setObject:[NSNumber numberWithInt:hit] forKey:@"HITCOUNT"];
+	[gameStats setObject:[NSNumber numberWithInt:miss] forKey:@"MISSCOUNT"];
+	[gameStats setObject:[NSNumber numberWithInt:score] forKey:@"SCORE"];
 }
 
 #if 1
@@ -142,7 +182,7 @@
 						 [hitDonut removeFromSuperview];
 						 [hitDonutArray addObject:hitDonut];
 						 [donutArray removeObjectIdenticalTo:hitDonut];
-						 [self checkProgress];
+						 [self updateProgress:@"hit"];
 					 }];
 		[sharedSoundManager playSoundWithKey:@"omnom" gain:1.0f pitch:0.5f location:Vector2fZero shouldLoop:NO];
 	} else {
@@ -206,11 +246,11 @@
 					 completion:^(BOOL finished){
 						 if(x>37){
 							 if (lastDonut.hitcount < 2) {
-								 [missDonutArray addObject:lastDonut];
 								 NSLog(@"Donut disappeared!");
+								 [missDonutArray addObject:lastDonut];
+								 [self updateProgress:@"disp"];
 							 }
 							 [lastDonut removeFromSuperview];
-							 [self checkLose];
 							 [donutArray removeObjectIdenticalTo:lastDonut];
 							 return;
 						 }
@@ -317,6 +357,7 @@
 	[donutLoop release];
 	[donutTimer release];
 	[missDonutArray release];
+	[gameStats release];
 	[donutArray release];
     [super dealloc];
 }

@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 
+
 @class SingletonSoundManager;
 
 @interface OmNomDonutsViewController : UIViewController {
@@ -19,8 +20,10 @@
 	NSRunLoop *donutLoop;
 	NSTimer *donutTimer;
 	SingletonSoundManager *sharedSoundManager;
+	NSMutableDictionary *gameStats;
 }
 
+@property (nonatomic, retain) NSMutableDictionary *gameStats;
 @property (nonatomic, retain) NSRunLoop *donutLoop;
 @property (nonatomic, retain) NSMutableArray *hitDonutArray;
 @property (nonatomic, retain) NSMutableArray *missDonutArray;
@@ -32,8 +35,7 @@
 -(void)addDonut;
 -(void)animateDonutScaleUp:(id)sender value:(NSUInteger)x;
 -(void)animateDonutScaleDown:(id)sender value:(NSUInteger)x;
--(void)checkLose;
--(void)checkProgress;
+-(void)updateProgress:(id)sender;
 
 @end
 
