@@ -21,6 +21,8 @@
 		9B1ACDA012D03B7F00BFD84E /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B1ACD9F12D03B7F00BFD84E /* CoreAudio.framework */; };
 		9B1ACDA412D03B8700BFD84E /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B1ACDA312D03B8700BFD84E /* OpenAL.framework */; };
 		9B1ACDA812D03B8F00BFD84E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B1ACDA712D03B8F00BFD84E /* AVFoundation.framework */; };
+		9BA85D0212D163A1008B2B8B /* gamebg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BA85D0012D163A1008B2B8B /* gamebg.png */; };
+		9BA85D0312D163A1008B2B8B /* gamebg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BA85D0112D163A1008B2B8B /* gamebg@2x.png */; };
 		9BC2C71D12D1476100F7704B /* hit.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9BC2C71C12D1476100F7704B /* hit.caf */; };
 		9BC2C72712D14A5C00F7704B /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BC2C72512D14A5C00F7704B /* icon.png */; };
 		9BC2C72812D14A5C00F7704B /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BC2C72612D14A5C00F7704B /* icon@2x.png */; };
@@ -60,6 +62,8 @@
 		9B1ACDA312D03B8700BFD84E /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		9B1ACDA712D03B8F00BFD84E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9B1ACDB212D03BB700BFD84E /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		9BA85D0012D163A1008B2B8B /* gamebg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gamebg.png; sourceTree = "<group>"; };
+		9BA85D0112D163A1008B2B8B /* gamebg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gamebg@2x.png"; sourceTree = "<group>"; };
 		9BC2C71C12D1476100F7704B /* hit.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = hit.caf; sourceTree = "<group>"; };
 		9BC2C72512D14A5C00F7704B /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		9BC2C72612D14A5C00F7704B /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 				EFD2787F12CEFF1F00D7B0F3 /* donut1_60x60.png */,
 				9BC2C77212D1530600F7704B /* cooking.mp3 */,
 				EFD2783412CEDD1900D7B0F3 /* bagel.png */,
+				9BA85D0012D163A1008B2B8B /* gamebg.png */,
+				9BA85D0112D163A1008B2B8B /* gamebg@2x.png */,
 				EFD277B912CED0F100D7B0F3 /* bluetablecloth.png */,
 				2899E5210DE3E06400AC0155 /* OmNomDonutsViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
@@ -246,6 +252,8 @@
 				9BC2C72812D14A5C00F7704B /* icon@2x.png in Resources */,
 				9BC2C74912D14C7A00F7704B /* miss.caf in Resources */,
 				9BC2C77312D1530600F7704B /* cooking.mp3 in Resources */,
+				9BA85D0212D163A1008B2B8B /* gamebg.png in Resources */,
+				9BA85D0312D163A1008B2B8B /* gamebg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

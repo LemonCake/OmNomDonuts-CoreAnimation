@@ -1,2 +1,5 @@
 *.pbxproj -crlf -diff -merge
 *.png -crlf -diff -merge
+*.xib -crlf -diff -merge
+*.caf -crlf -diff -merge
+*.mp3 -crlf -diff -merge
